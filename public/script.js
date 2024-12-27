@@ -2,7 +2,7 @@ const textArea = document.getElementById("text_to_summarize");
 const submitButton = document.getElementById("submit-button");
 const summarizedTextArea = document.getElementById("summary");
 
-const REQUEST_URL = process.env['REQUEST_URL'] || "http://localhost:3000";
+const REQUEST_URL = "http://localhost:3000" ;
 submitButton.disabled = true;
 
 function setButtonLoading(button, isLoading) {
