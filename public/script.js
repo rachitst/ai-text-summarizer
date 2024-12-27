@@ -2,6 +2,7 @@ const textArea = document.getElementById("text_to_summarize");
 const submitButton = document.getElementById("submit-button");
 const summarizedTextArea = document.getElementById("summary");
 
+const REQUEST_URL = window.REQUEST_URL || "http://localhost:3000";
 submitButton.disabled = true;
 
 function setButtonLoading(button, isLoading) {
@@ -27,7 +28,7 @@ extractKeywordsButton.addEventListener("click", () => {
     return;
   }
   setButtonLoading(extractKeywordsButton, true);
-  fetch("/extract_keywords", {
+  fetch(`${REQUEST_URL}/extract_keywords`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text: textToAnalyze }),
@@ -87,7 +88,7 @@ function submitData(e) {
     redirect: "follow"
   };
 
-  fetch("/summarize", requestOptions)
+  fetch(`${REQUEST_URL}/summarize`, requestOptions)
     .then((response) => response.text())
     .then(summary => {
       summarizedTextArea.value = summary;

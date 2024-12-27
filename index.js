@@ -1,11 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const natural = require('natural');
 const app = express();
 const port = 3000;
 const summarizeText = require('./summarize.js');
 
+app.use(cors());
 app.use(express.json());
-
 app.use(express.static('public'));
 
 app.post('/summarize', (req, res) => {
